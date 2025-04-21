@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react';
-import playIcon from '../assets/play-icon.svg';
 import thumbnail from  "../assets/video_thumb.png"
 import TitleSection from './TitleSection';
 import { FaPlay } from "react-icons/fa";
