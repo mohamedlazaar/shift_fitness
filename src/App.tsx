@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Header from './components/Header'
 import HeroSection from './components/HeroSection'
 import ScrollingBanner from './components/ScrollingBanner'
@@ -18,33 +19,50 @@ import program9 from './assets/programs/program_9.png'
 import About from './components/About'
 import './App.css'
 import GallerySection from './components/GallerySection'
+import Loader from './components/Loader'
+
 function App() {
- 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate loading time
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000); // 3 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
-        <Header />
-        <HeroSection />
-        <ScrollingBanner />
-        <FeaturedList title='Our Fitness' subtitle='Programs' titleColor='text-[#0B1301]' bgColor='bg-[#FFFFFF]' >
-          <Program title='Core Stability & Flexibility Training' image={program1} showButtomLine={true} titleColor='text-[#0B1301]'/>
-          <Program title='Functional Movement Training' image={program2} showButtomLine={true} titleColor='text-[#0B1301]'  />
-          <Program title='Pilates For Posture & Strength' image={program3} showButtomLine={true} titleColor='text-[#0B1301]' />
-        </FeaturedList>
-        <About />
-        <GallerySection />      
-        <FeaturedList title='Our Daily' subtitle='Workouts' titleColor='text-[#D6FD52]' bgColor='bg-[#141414]' >
-          <Program title='Mono Monday 7 Rounds Hyrox' image={program4} showButtomLine={true} titleColor='text-[#FFFFFF]'/>
-          <Program title='How Many Burpees Can You Get' image={program5} showButtomLine={false} titleColor='text-[#FFFFFF]'  />
-          <Program title='Front Squat Strength Block' image={program6} showButtomLine={true} titleColor='text-[#FFFFFF]' />
-          <Program title='Functional Body Building' image={program7} showButtomLine={false} titleColor='text-[#FFFFFF]'/>
-          <Program title='Nutrition Tips For Your Best Workout Results' image={program8} showButtomLine={true} titleColor='text-[#FFFFFF]'  />
-          <Program title='Front Squat Strength Block' image={program9} showButtomLine={false} titleColor='text-[#FFFFFF]' />
-        </FeaturedList>
-        <VideoSection />
-        <ScrollingBanner />
-        <Newsletter />
-        <Footer />
+      {loading ? (
+        <Loader />
+      ) : (
+        <main className="w-full overflow-x-hidden">
+          <Header />
+          <HeroSection />
+          <ScrollingBanner />
+          <FeaturedList title='Our Fitness' subtitle='Programs' titleColor='text-[#0B1301]' bgColor='bg-[#FFFFFF]'>
+            <Program title='Core Stability & Flexibility Training' image={program1} showButtomLine={true} titleColor='text-[#0B1301]'/>
+            <Program title='Functional Movement Training' image={program2} showButtomLine={true} titleColor='text-[#0B1301]'/>
+            <Program title='Pilates For Posture & Strength' image={program3} showButtomLine={true} titleColor='text-[#0B1301]'/>
+          </FeaturedList>
+          <About />
+          <GallerySection />      
+          <FeaturedList title='Our Daily' subtitle='Workouts' titleColor='text-[#D6FD52]' bgColor='bg-[#141414]'>
+            <Program title='Mono Monday 7 Rounds Hyrox' image={program4} showButtomLine={true} titleColor='text-[#FFFFFF]'/>
+            <Program title='How Many Burpees Can You Get' image={program5} showButtomLine={false} titleColor='text-[#FFFFFF]'/>
+            <Program title='Front Squat Strength Block' image={program6} showButtomLine={true} titleColor='text-[#FFFFFF]'/>
+            <Program title='Functional Body Building' image={program7} showButtomLine={false} titleColor='text-[#FFFFFF]'/>
+            <Program title='Nutrition Tips For Your Best Workout Results' image={program8} showButtomLine={true} titleColor='text-[#FFFFFF]'/>
+            <Program title='Front Squat Strength Block' image={program9} showButtomLine={false} titleColor='text-[#FFFFFF]'/>
+          </FeaturedList>
+          <VideoSection />
+          <ScrollingBanner />
+          <Newsletter />
+          <Footer />
+        </main>
+      )}
     </>
   )
 }

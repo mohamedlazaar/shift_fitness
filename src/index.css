@@ -10,6 +10,20 @@
   }
 }
 
+@keyframes progressBar {
+  0% {
+    width: 0%;
+    background: #D6FD52;
+  }
+  50% {
+    background: #D6FD52;
+  }
+  100% {
+    width: 100%;
+    background: #D6FD52;
+  }
+}
+
 .scrolling-text {
   white-space: nowrap;
   overflow: hidden;
@@ -24,6 +38,10 @@
   color: black;
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+.animate-progressBar {
+  animation: progressBar 2.5s ease-in-out;
 }
 
 :root {
